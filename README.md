@@ -13,4 +13,4 @@ source ./install/setup.bash
 
 ## Example Use
 
-```ros2 launch robots robot_launch.py robot:=thomas camera:=true```
+```ros2 launch robots robot_launch.py robot:=thomas camera:=true lidar:=true```
