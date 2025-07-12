@@ -21,6 +21,11 @@ def generate_launch_description():
         description='Launch camera node.',
         default_value='false'
     )
+    lidar_launch_arg = DeclareLaunchArgument(
+        'lidar',
+        description='Launch lidar node.',
+        default_value='false'
+    )
     motors_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             PathJoinSubstitution([
@@ -44,11 +49,40 @@ def generate_launch_description():
         parameters=[{"in_transport": "raw", "out_transport": "compressed"}],
         remappings=[
             ('in', PathJoinSubstitution([robot_name, 'image'])),
-            ('out/compressed', PathJoinSubstitution([robot_name, 'compressed']))]
+            ('out/compressed', PathJoinSubstitution([robot_name, 'compressed']))],
+        condition=IfCondition(LaunchConfiguration('camera'))
     )
+    lidar_node = Node(
+        package='ldlidar_stl_ros2',
+        executable='ldlidar_stl_ros2_node',
+        name='LD19',
+        output='screen',
+        parameters=[
+            {'product_name': 'LDLiDAR_LD19'},
+            {'topic_name': 'scan'},
+            {'frame_id': 'base_laser'},
+            {'port_name': '/dev/ttyUSB0'},
+            {'port_baudrate': 230400},
+            {'laser_scan_dir': True},
+            {'enable_angle_crop_func': False},
+            {'angle_crop_min': 135.0},
+            {'angle_crop_max': 225.0}
+        ],
+        condition=IfCondition(LaunchConfiguration('lidar'))
+    )
+    base_link_to_laser_tf_node = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='base_link_to_base_laser_ld19',
+        arguments=['0','0','0.0','1.57','0','0','base_link','base_laser'],
+        condition=IfCondition(LaunchConfiguration('lidar'))
+    )
+
     return LaunchDescription([
         robot_launch_arg,
         camera_launch_arg,
         motors_launch,
         camera_node,
-        compress_node])
+        compress_node,
+        lidar_node,
+        base_link_to_laser_tf_node])
