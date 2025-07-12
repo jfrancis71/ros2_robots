@@ -81,6 +81,7 @@ def generate_launch_description():
     return LaunchDescription([
         robot_launch_arg,
         camera_launch_arg,
+        lidar_launch_arg,
         motors_launch,
         camera_node,
         compress_node,
