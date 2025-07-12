@@ -21,7 +21,7 @@ def generate_launch_description():
         description='Launch camera node.',
         default_value='false'
     )
-    thomas_launch = IncludeLaunchDescription(
+    motors_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             PathJoinSubstitution([
                 FindPackageShare(robot_name),
@@ -49,6 +49,6 @@ def generate_launch_description():
     return LaunchDescription([
         robot_launch_arg,
         camera_launch_arg,
-        thomas_launch,
+        motors_launch,
         camera_node,
         compress_node])
