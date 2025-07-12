@@ -14,3 +14,13 @@ source ./install/setup.bash
 ## Example Use
 
 ```ros2 launch robots robot_launch.py robot:=thomas camera:=true lidar:=true```
+
+
+## Lidar Notes:
+
+Lidar is model: ldrobot STL-19P
+
+Lidar repo comes from: https://github.com/ldrobotSensorTeam/ldlidar_stl_ros2
+
+For compiling on Ubuntu see following PR:
+https://github.com/ldrobotSensorTeam/ldlidar_stl_ros2/pull/24
