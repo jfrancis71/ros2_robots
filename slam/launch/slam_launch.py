@@ -10,25 +10,6 @@ from launch.conditions import IfCondition
 
 def generate_launch_description():
 
-    camera_launch_arg = DeclareLaunchArgument(
-        'camera',
-        description='Launch camera node.',
-        default_value='false'
-    )
-    robot_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([
-            PathJoinSubstitution([
-                FindPackageShare("robots"),
-                'launch',
-                'robot_launch.py'
-            ])
-        ]),
-        launch_arguments={
-                'robot': 'thomas',
-                'camera': LaunchConfiguration('camera'),
-                'lidar': 'true'
-            }.items()
-        )
     slam_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             PathJoinSubstitution([
@@ -46,7 +27,4 @@ def generate_launch_description():
             }.items()
         )
 
-    return LaunchDescription([
-        camera_launch_arg,
-        robot_launch,
-        slam_launch])
+    return LaunchDescription([slam_launch])
