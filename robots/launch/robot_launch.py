@@ -31,7 +31,7 @@ def generate_launch_description():
             PathJoinSubstitution([
                 FindPackageShare(robot_name),
                 'launch',
-                'brickpi3_motors_launch.py'
+                'motors_launch.py'
             ])
         ]),
     )
