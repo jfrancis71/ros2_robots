@@ -14,7 +14,7 @@ def generate_launch_description():
         executable='republish',
         parameters=[{"in_transport": "compressed", "out_transport": "raw"}],
         remappings=[
-            ('in/compressed', 'thomas/compressed'),
+            ('in/compressed', '/robot/compressed'),
             ('out', '/desktop/image')],
     )
     stereo_split_node = Node(
