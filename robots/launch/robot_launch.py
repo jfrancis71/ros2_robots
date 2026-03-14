@@ -40,7 +40,7 @@ def generate_launch_description():
         executable='cam2image',
         parameters=[{"frequency": 10.0}],
         remappings=[
-            ('/image', PathJoinSubstitution([robot_name, 'image']))],
+            ('/image', '/robot/image')],
         condition=IfCondition(LaunchConfiguration('camera'))
     )
     compress_node = Node(
@@ -48,8 +48,8 @@ def generate_launch_description():
         executable='republish',
         parameters=[{"in_transport": "raw", "out_transport": "compressed"}],
         remappings=[
-            ('in', PathJoinSubstitution([robot_name, 'image'])),
-            ('out/compressed', PathJoinSubstitution([robot_name, 'compressed']))],
+            ('in', '/robot/image'),
+            ('out/compressed', '/robot/compressed')],
         condition=IfCondition(LaunchConfiguration('camera'))
     )
     lidar_node = Node(
