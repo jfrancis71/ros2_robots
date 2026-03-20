@@ -12,18 +12,18 @@ docker -H ssh://julian@brickpi3 run -it --rm --privileged --network=host --ipc=h
 
 Brings up joystick and stereo pipeline:
 ```
-docker run -it --rm --privileged --network=host --ipc=host --volume=ros2_config_20263001:/root/ros2_config ros2_desktop
+docker run -it --rm --privileged --network=host --ipc=host --volume=ros2_config_20260130:/root/ros2_config ros2_desktop
 ```
 
 Brings up NAV2:
 ```
-docker run -it --rm --network=host --ipc=host --volume=ros2_config_20263001:/root/ros2_config ros2_nav2
+docker run -it --rm --network=host --ipc=host --volume=ros2_config_20260130:/root/ros2_config ros2_nav2
 ```
 
 Bring up general:
 
 ```
-docker run -it --rm --privileged --network=host --ipc=host --volume ros2_config:/root/ros2_config_20263001 -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials -v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" ros2_desktop /bin/bash
+docker run -it --rm --privileged --network=host --ipc=host --volume ros2_config:/root/ros2_config_20260130 -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials -v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" ros2_desktop /bin/bash
 ```
 
 ## Lidar Notes:
