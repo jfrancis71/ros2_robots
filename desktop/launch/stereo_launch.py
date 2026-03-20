@@ -20,8 +20,8 @@ def generate_launch_description():
     stereo_split_node = Node(
         package='stereo_demo',
         executable='stereo_split_node',
-        parameters=[{"left_camera_info_url": "file:///root/ros2_config/calibration_30_01_2026/left.yaml"},
-            {"right_camera_info_url": "file:///root/ros2_config/calibration_30_01_2026/right.yaml"}],
+        parameters=[{"left_camera_info_url": "file:///root/ros2_config/calibration/left.yaml"},
+            {"right_camera_info_url": "file:///root/ros2_config/calibration/right.yaml"}],
         remappings=[
         ('/image', "/desktop/image")],
     )
