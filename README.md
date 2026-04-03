@@ -23,7 +23,7 @@ docker run -it --rm --network=host --ipc=host --volume=ros2_config_20260130:/roo
 Bring up general:
 
 ```
-docker run -it --rm --privileged --network=host --ipc=host --volume ros2_config:/root/ros2_config_20260130 -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials -v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" ros2_desktop /bin/bash
+docker run -it --rm --privileged --network=host --ipc=host --volume ros2_config_20260130:/root/ros2_config -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials -v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" ros2_desktop /bin/bash
 ```
 
 ## Lidar Notes:
