@@ -1,15 +1,15 @@
 services:
   motors:
-    image: robot_thomas
+    image: thomas
     privileged: true
     network_mode: host
 
   camera:
-    image: robot_camera
+    image: camera
     privileged: true
     network_mode: host
 
   lidar:
-    image: robot_lidar
+    image: lidar
     privileged: true
     network_mode: host
