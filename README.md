@@ -7,23 +7,29 @@ ROS2 launch file for starting my self designed robots in a variety of configurat
 
 To launch Thomas the robot (on brickpi3):
 ```
-docker -H ssh://julian@brickpi3 run -it --rm --privileged --network=host --ipc=host robot_thomas
+DOCKER_HOST="ssh://julian@brickpi3" docker compose -f ./docker-compose/thomas/docker-compose.yaml up -d
 ```
 
-Brings up joystick and stereo pipeline:
+To stop Thomas the robot (on brickpi3):
 ```
-docker run -it --rm --privileged --network=host --ipc=host --volume=ros2_config_20260130:/root/ros2_config ros2_desktop
-```
-
-Brings up NAV2:
-```
-docker run -it --rm --network=host --ipc=host --volume=ros2_config_20260130:/root/ros2_config ros2_nav2
+DOCKER_HOST="ssh://julian@brickpi3" docker compose -f ./docker-compose/thomas/docker-compose.yaml down
 ```
 
-Bring up general:
+Brings up services:
+```
+docker compose -f ./docker-compose/server/docker-compose.yaml up -d
+```
+
+Shuts down services:
+```
+docker compose -f ./docker-compose/server/docker-compose.yaml down
+```
+
+
+Bring up rviz2:
 
 ```
-docker run -it --rm --privileged --network=host --ipc=host --volume ros2_config_20260130:/root/ros2_config -v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials -v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" ros2_desktop /bin/bash
+docker run -it --rm --network=host --ipc=host -v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" rviz2
 ```
 
 ## Lidar Notes:
