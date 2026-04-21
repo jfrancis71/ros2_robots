@@ -1,22 +1,42 @@
 services:
   republisher:
     image: republisher
-    privileged: true
     network_mode: host
+    ipc: host
 
   stereo_split_node:
     image: stereo_split_node
-    privileged: true
     network_mode: host
+    ipc: host
     volumes:
       - ros2_config_20260403:/root/ros2_config
 
   stereo_proc:
     image: stereo_proc
-    privileged: true
     network_mode: host
+    ipc: host
 
-  lidar:
-    image: 
+  camera_frame:
+    image: camera_frame
+    network_mode: host
+    ipc: host
+
+  joystick:
+    image: joystick
     privileged: true
     network_mode: host
+    ipc: host
+
+  nav2:
+    image: nav2
+    network_mode: host
+    ipc: host
+    volumes:
+      - ros2_config_20260130:/root/ros2_config
+
+
+volumes:
+  ros2_config_20260403:
+    external: true
+  ros2_config_20260130:
+    external: true
