@@ -1,0 +1,22 @@
+services:
+  republisher:
+    image: republisher
+    privileged: true
+    network_mode: host
+
+  stereo_split_node:
+    image: stereo_split_node
+    privileged: true
+    network_mode: host
+    volumes:
+      - ros2_config_20260403:/root/ros2_config
+
+  stereo_proc:
+    image: stereo_proc
+    privileged: true
+    network_mode: host
+
+  lidar:
+    image: 
+    privileged: true
+    network_mode: host
