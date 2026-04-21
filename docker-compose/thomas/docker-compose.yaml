@@ -1,15 +1,22 @@
 services:
   motors:
     image: thomas
-    privileged: true
     network_mode: host
+    devices:
+      - "/dev/spidev0.1"
 
   camera:
     image: camera
-    privileged: true
     network_mode: host
+    volumes:
+      - /dev:/dev
+    device_cgroup_rules:
+      - 'c 81:* rmw'
 
   lidar:
     image: lidar
-    privileged: true
     network_mode: host
+    volumes:
+      - /dev:/dev
+    device_cgroup_rules:
+      - 'c 188:* rmw'

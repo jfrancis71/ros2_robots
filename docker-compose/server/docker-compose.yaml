@@ -23,9 +23,12 @@ services:
 
   joystick:
     image: joystick
-    privileged: true
     network_mode: host
     ipc: host
+    volumes:
+      - /dev:/dev
+    device_cgroup_rules:
+      - 'c 13:* rmw'
 
   nav2:
     image: nav2
