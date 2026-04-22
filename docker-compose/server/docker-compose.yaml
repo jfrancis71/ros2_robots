@@ -21,6 +21,17 @@ services:
     network_mode: host
     ipc: host
 
+  ffs:
+    image: ros2_ffs
+    network_mode: host
+    ipc: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+
   joystick:
     image: joystick
     network_mode: host
@@ -36,6 +47,18 @@ services:
     ipc: host
     volumes:
       - ros2_config_20260130:/root/ros2_config
+
+  rviz2:
+    image: rviz2
+    network_mode: host
+    ipc: host
+    volumes:
+      - type: bind
+        source: $XAUTHORITY
+        target: $XAUTHORITY
+    environment:
+      - XAUTHORITY=$XAUTHORITY
+      - DISPLAY=$DISPLAY
 
 
 volumes:
