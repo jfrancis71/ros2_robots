@@ -25,13 +25,6 @@ Shuts down services:
 docker compose -f ./docker-compose/server/docker-compose.yaml down
 ```
 
-
-Bring up rviz2:
-
-```
-docker run -it --rm --network=host --ipc=host -v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY" rviz2
-```
-
 ## Lidar Notes:
 
 Lidar is model: ldrobot STL-19P
