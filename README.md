@@ -25,6 +25,11 @@ Shuts down services:
 docker compose -f ./docker-compose/server/docker-compose.yaml down
 ```
 
+To bring up a basic ROS shell:
+```
+docker run -it --rm --network=host --ipc=host ros:jazzy-ros-base /bin/bash
+```
+
 ## Lidar Notes:
 
 Lidar is model: ldrobot STL-19P
