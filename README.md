@@ -30,6 +30,16 @@ To bring up a basic ROS shell:
 docker run -it --rm --network=host --ipc=host ros:jazzy-ros-base /bin/bash
 ```
 
+To start a single service, eg republisher
+```
+docker compose -f ./docker-compose/server/docker-compose.yaml run republisher
+```
+
+To remove all containers:
+```
+docker container prune
+```
+
 ## Lidar Notes:
 
 Lidar is model: ldrobot STL-19P
