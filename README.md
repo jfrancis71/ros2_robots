@@ -30,9 +30,9 @@ To bring up a basic ROS shell:
 docker run -it --rm --network=host --ipc=host ros:jazzy-ros-base /bin/bash
 ```
 
-To start a single service, eg republisher
+To start rviz2 and ffs
 ```
-docker compose -f ./docker-compose/server/docker-compose.yaml run republisher
+docker compose -f ./docker-compose/server/docker-compose.yaml up rviz2 ffs
 ```
 
 To remove all containers:
