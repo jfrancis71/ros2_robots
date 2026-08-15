@@ -2,7 +2,7 @@
 # Forward controlled by left stick, rotate controlled by right stick.
 # Must be in XBOX compatability mode (red light on controller).
 
-teleop_twist_joy_node:
+teleop_ackermann_twist_joy_node:
   ros__parameters:
     axis_linear:  # Left thumb stick vertical
       x: 1
