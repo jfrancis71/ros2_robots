@@ -40,6 +40,20 @@ To remove all containers:
 docker container prune
 ```
 
+## Extra Notes
+
+To add git credentials to docker run:
+
+```
+-v $HOME/.gitconfig:/root/.gitconfig -v $HOME/.git-credentials:/root/.git-credentials
+```
+
+To add X Windows access:
+
+```
+-v="$XAUTHORITY:$XAUTHORITY" --env="XAUTHORITY=$XAUTHORITY"  --env="DISPLAY=$DISPLAY"
+```
+
 ## Lidar Notes:
 
 Lidar is model: ldrobot STL-19P
