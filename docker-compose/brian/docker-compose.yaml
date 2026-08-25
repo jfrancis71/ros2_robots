@@ -1,0 +1,14 @@
+services:
+  motors:
+    image: brian
+    network_mode: host
+    devices:
+      - "/dev/ttyAMA0"
+
+  camera:
+    image: camera
+    network_mode: host
+    volumes:
+      - /dev:/dev
+    device_cgroup_rules:
+      - 'c 81:* rmw'
