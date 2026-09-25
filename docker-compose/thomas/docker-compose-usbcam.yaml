@@ -1,0 +1,8 @@
+services:
+  camera:
+    image: camera_stereo_usbcam
+    network_mode: host
+    volumes:
+      - /dev:/dev
+    device_cgroup_rules:
+      - 'c 81:* rmw'
