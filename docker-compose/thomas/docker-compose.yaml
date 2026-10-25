@@ -1,12 +1,22 @@
 services:
   motors:
     image: thomas
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 200M
     network_mode: host
     devices:
       - "/dev/spidev0.1"
 
   camera:
     image: camera
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 200M
     network_mode: host
     volumes:
       - /dev:/dev
@@ -15,6 +25,11 @@ services:
 
   lidar:
     image: lidar
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 200M
     network_mode: host
     volumes:
       - /dev:/dev
